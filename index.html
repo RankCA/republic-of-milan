@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Republic of Milan &middot; The Republic Calls</title>
+<meta name="description" content="Join the Republic of Milan, a player nation in Parlamentum. Founding Day is Saturday 10 October at 17:00 UTC.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Republic of Milan">
+<meta property="og:url" content="https://republic-of-milan.vercel.app/">
+<meta property="og:title" content="The Republic Calls: join the Republic of Milan">
+<meta property="og:description" content="A full government, a plan to build the city from the first hour, and people who will help you get started. Founding Day: Saturday 10 October, 17:00 UTC.">
+<meta property="og:image" content="https://republic-of-milan.vercel.app/og.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="336">
+<meta property="og:image:alt" content="The Republic Calls: the recruitment poster of the Republic of Milan">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#161b15">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 36'%3E%3Cpath d='M2 2h28v14c0 9.5-6.6 15.6-14 18C8.6 31.6 2 25.5 2 16z' fill='%23f6edda'/%3E%3Cpath d='M13 2h6v30.5h-6zM2 11h28v6H2z' fill='%23b8352b'/%3E%3Cpath d='M2 2h28v14c0 9.5-6.6 15.6-14 18C8.6 31.6 2 25.5 2 16z' fill='none' stroke='%23c9a465' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@400;600&display=swap">
+<script>
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js");
+    setTimeout(function () {
+      if (!window.revealReady) document.documentElement.classList.remove("js");
+    }, 4000);
+  }
+</script>
+<style>
+  /* Art direction: a 1910s Italian recruitment broadsheet. Dark ink hero with the poster as centrepiece,
+     cream paper sections, oxblood call to action. Type: Cinzel (the poster's Roman capitals) + Crimson Pro. */
+  :root {
+    --ink-950: #111510;
+    --ink-900: #161b15;
+    --ink-800: #1d241c;
+    --cream-50: #f6edda;
+    --cream-200: #e6d9bb;
+    --cream-300: #cdbf9f;
+    --paper: #f2e8d2;
+    --paper-2: #e9dcbf;
+    --card: #f8f1e1;
+    --line: #d3c095;
+    --text: #1d241c;
+    --muted: #5b5240;
+    --red-600: #a3301f;
+    --red-700: #8e2a1f;
+    --red-800: #7a2219;
+    --gold-300: #e3c48a;
+    --gold-400: #c9a465;
+    --gold-700: #80612f;
+    --green-700: #2f5d3a;
+    --flag-green: #3d7d52;
+    --flag-white: #f4ead4;
+    --flag-red: #b8352b;
+    --line-dark: rgba(201, 164, 101, 0.3);
+    --font-display: "Cinzel", "Trajan Pro", "Times New Roman", serif;
+    --font-body: "Crimson Pro", Georgia, "Times New Roman", serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --container: 1180px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --section-y: clamp(72px, 10vw, 128px);
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --grain-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .11 0 0 0 0 .12 0 0 0 0 .09 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --grain-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .96 0 0 0 0 .93 0 0 0 0 .85 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --focus: var(--text);
+    color-scheme: light;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  @media (min-width: 768px) { body { font-size: 1.1875rem; } }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+  a { color: inherit; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+  .skip {
+    position: absolute; left: 12px; top: -64px; z-index: 100;
+    padding: 12px 18px; background: var(--cream-50); color: var(--ink-900);
+    font-weight: 600; text-decoration: none;
+  }
+  .skip:focus { top: 12px; }
+  .icon { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .logo { width: 22px; height: 22px; flex: none; fill: currentColor; }
+  .dark { background-color: var(--ink-900); color: var(--cream-50); --focus: var(--gold-300); }
+
+  /* Header */
+  .site-header {
+    position: sticky; top: 0; z-index: 40;
+    background: var(--ink-900); color: var(--cream-50);
+    border-bottom: 1px solid var(--line-dark);
+    --focus: var(--gold-300);
+  }
+  .site-header::before {
+    content: ""; display: block; height: 4px;
+    background: linear-gradient(90deg, var(--flag-green) 0 33.34%, var(--flag-white) 33.34% 66.67%, var(--flag-red) 66.67% 100%);
+  }
+  .header-inner { display: flex; align-items: center; gap: 28px; min-height: 64px; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-right: auto;
+    text-decoration: none; font-family: var(--font-display); font-weight: 700;
+    font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+  }
+  .brand svg { width: 26px; height: 30px; flex: none; }
+  .nav { display: flex; gap: 26px; }
+  .nav a {
+    display: inline-flex; align-items: center; min-height: 44px;
+    color: var(--cream-300); font-family: var(--font-display); font-weight: 700;
+    font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration-line: underline; text-decoration-color: transparent;
+    text-decoration-thickness: 1px; text-underline-offset: 8px;
+    transition: color 200ms var(--ease), text-decoration-color 200ms var(--ease);
+  }
+  .nav a:hover { color: var(--cream-50); text-decoration-color: var(--gold-400); }
+  @media (max-width: 900px) { .nav { display: none; } }
+  @media (max-width: 480px) {
+    .header-inner { gap: 12px; }
+    .brand { gap: 10px; font-size: 0.8rem; letter-spacing: 0.05em; }
+    .brand svg { width: 22px; height: 26px; }
+  }
+  @media (max-width: 420px) { .hide-sm { display: none; } }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 48px; padding: 0 24px; border: 0; border-radius: 2px;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.84rem;
+    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+    cursor: pointer; touch-action: manipulation;
+    transition: background-color 200ms var(--ease), box-shadow 200ms var(--ease), transform 120ms var(--ease);
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-red {
+    background: var(--red-700); color: #fbf3e2;
+    box-shadow: inset 0 0 0 1px rgba(227, 196, 138, 0.5), 0 12px 24px -14px rgba(0, 0, 0, 0.7);
+  }
+  .btn-red:hover {
+    background: var(--red-600);
+    box-shadow: inset 0 0 0 1px rgba(227, 196, 138, 0.85), 0 16px 30px -14px rgba(0, 0, 0, 0.75);
+  }
+  .btn-cream {
+    background: var(--cream-50); color: var(--red-800);
+    box-shadow: inset 0 0 0 1px rgba(122, 34, 25, 0.25), 0 14px 28px -14px rgba(0, 0, 0, 0.6);
+  }
+  .btn-cream:hover { background: #fffaf0; }
+  .btn-lg { min-height: 56px; padding: 0 30px; font-size: 0.9rem; }
+  .btn-sm { min-height: 44px; padding: 0 16px; font-size: 0.72rem; letter-spacing: 0.14em; }
+  .btn-sm .logo { width: 20px; height: 20px; }
+
+  /* Hero */
+  .hero { position: relative; isolation: isolate; overflow: hidden; --rx: 74%; --ry: 48%; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -2;
+    background: repeating-conic-gradient(from 0deg at var(--rx) var(--ry), rgba(201, 164, 101, 0.08) 0deg 4deg, transparent 4deg 12deg);
+    -webkit-mask-image: radial-gradient(circle at var(--rx) var(--ry), #000 0%, transparent 58%);
+    mask-image: radial-gradient(circle at var(--rx) var(--ry), #000 0%, transparent 58%);
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      var(--grain-light),
+      radial-gradient(circle at var(--rx) var(--ry), rgba(201, 164, 101, 0.17), transparent 40%),
+      linear-gradient(180deg, transparent 65%, rgba(0, 0, 0, 0.28));
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(40px, 6vw, 88px); align-items: center;
+    padding-block: clamp(44px, 7vw, 96px) clamp(64px, 9vw, 120px);
+  }
+  .eyebrow {
+    display: flex; flex-wrap: wrap; align-items: center; row-gap: 6px; margin: 0 0 22px;
+    color: var(--gold-300); font-family: var(--font-display); font-weight: 700;
+    font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .eyebrow .icon { width: 18px; height: 18px; margin-right: 12px; }
+  .eyebrow-date span + span::before,
+  .eyebrow-label::after { content: "\00b7"; margin: 0 10px; color: var(--gold-400); }
+  .eyebrow-date span { white-space: nowrap; }
+  @media (max-width: 560px) {
+    .eyebrow-label::after { content: none; }
+    .eyebrow-date { flex-basis: 100%; padding-left: 30px; }
+  }
+  @media (max-width: 360px) {
+    .eyebrow-date { display: flex; flex-direction: column; row-gap: 6px; }
+    .eyebrow-date span + span::before { content: none; }
+  }
+  .hero h1 {
+    margin: 0 0 24px; font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(2.6rem, 14vw, 5.1rem); line-height: 0.98; letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .hero h1 span { display: block; }
+  .hero h1 .the { margin-bottom: 0.12em; color: var(--cream-300); font-size: 0.42em; letter-spacing: 0.34em; }
+  .hero h1 .accent { color: var(--gold-400); }
+  .lede { margin: 0 0 32px; max-width: 36ch; color: var(--cream-200); font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.5; }
+  .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; max-width: 440px; margin: 0 0 14px; }
+  .unit {
+    padding: 14px 4px 12px; text-align: center; border-radius: 2px;
+    background: rgba(246, 237, 218, 0.04); border: 1px solid var(--line-dark);
+  }
+  .unit b {
+    display: block; font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(1.7rem, 5vw, 2.5rem); line-height: 1; color: var(--cream-50);
+    font-variant-numeric: tabular-nums;
+  }
+  .unit span {
+    display: block; margin-top: 8px; color: var(--cream-300);
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(0.56rem, 2.2vw, 0.68rem); letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .when { margin: 0 0 32px; max-width: 46ch; color: var(--cream-300); font-size: 1rem; }
+  .founded { margin: 0 0 32px; color: var(--gold-300); font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 0.06em; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+  .link-arrow {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+    color: var(--cream-50); font-family: var(--font-display); font-weight: 700;
+    font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration-line: underline; text-decoration-color: rgba(201, 164, 101, 0.55);
+    text-decoration-thickness: 1px; text-underline-offset: 7px;
+    transition: text-decoration-color 200ms var(--ease);
+  }
+  .link-arrow:hover { text-decoration-color: var(--gold-300); }
+  .link-arrow .icon { width: 18px; height: 18px; transition: transform 200ms var(--ease); }
+  .link-arrow:hover .icon { transform: translateY(2px); }
+
+  .hero-poster { position: relative; justify-self: center; width: 100%; max-width: 440px; margin: 0; }
+  .poster-art {
+    position: relative; line-height: 0; background: #e8d6b3;
+    box-shadow: 0 0 0 1px rgba(201, 164, 101, 0.35), 0 50px 90px -40px rgba(0, 0, 0, 0.9), 0 22px 40px -22px rgba(0, 0, 0, 0.75);
+  }
+  .poster-art picture, .poster-art img { display: block; width: 100%; height: auto; }
+  .poster-art::after { content: ""; position: absolute; inset: 0; background: var(--grain-dark); opacity: 0.7; pointer-events: none; }
+  .seal { position: absolute; top: 19%; right: -44px; width: 128px; height: 128px; filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.45)); }
+  @media (max-width: 1180px) { .seal { right: -22px; width: 112px; height: 112px; } }
+  @media (max-width: 900px) {
+    .hero { --rx: 50%; --ry: 74%; }
+    .hero-inner { grid-template-columns: minmax(0, 1fr); }
+    .hero-poster { max-width: 380px; }
+  }
+  @media (max-width: 480px) { .seal { top: auto; bottom: 22%; right: -6px; width: 90px; height: 90px; } }
+
+  /* Motto band */
+  .motto { background: var(--grain-dark), var(--paper); border-bottom: 1px solid var(--line); }
+  .motto-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .motto-item { padding: clamp(30px, 4vw, 48px) clamp(16px, 3vw, 36px); text-align: center; }
+  .motto-item + .motto-item { border-left: 1px solid var(--line); }
+  .motto-num { display: block; margin-bottom: 6px; color: var(--gold-700); font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.2em; }
+  .motto-item h3 { margin: 0 0 8px; font-family: var(--font-display); font-weight: 900; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: 0.08em; text-transform: uppercase; }
+  .motto-item:nth-child(1) h3 { color: var(--green-700); }
+  .motto-item:nth-child(3) h3 { color: var(--red-700); }
+  .motto-item p { margin: 0 auto; max-width: 30ch; color: var(--muted); }
+  @media (max-width: 720px) {
+    .motto-grid { grid-template-columns: minmax(0, 1fr); }
+    .motto-item + .motto-item { border-left: 0; border-top: 1px solid var(--line); }
+  }
+
+  /* Sections */
+  .section { padding-block: var(--section-y); }
+  .paper { background: var(--grain-dark), var(--paper); }
+  .paper-alt { background: var(--grain-dark), var(--paper-2); }
+  .section-head { max-width: 720px; margin: 0 auto clamp(40px, 6vw, 64px); text-align: center; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 14px; margin: 0 0 14px;
+    color: var(--red-700); font-family: var(--font-display); font-weight: 700;
+    font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase;
+  }
+  .kicker::before, .kicker::after { content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.6; }
+  .section-head h2 {
+    margin: 0; font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(1.95rem, 5.2vw, 3.25rem); line-height: 1.06; letter-spacing: 0.01em;
+    text-transform: uppercase; text-wrap: balance;
+  }
+  .section-head .intro { margin: 18px auto 0; max-width: 54ch; color: var(--muted); font-size: 1.1em; }
+  .dark .kicker { color: var(--gold-300); }
+  .dark .section-head .intro { color: var(--cream-300); }
+
+  /* Why cards */
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .card {
+    position: relative; padding: 28px 26px 30px; background: var(--card); border: 1px solid var(--line);
+    box-shadow: inset 0 0 0 5px var(--card), inset 0 0 0 6px rgba(128, 97, 47, 0.22), 0 18px 36px -28px rgba(60, 40, 15, 0.55);
+  }
+  .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+  .card-icon {
+    display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+    background: var(--paper-2); color: var(--red-700); box-shadow: inset 0 0 0 1px rgba(128, 97, 47, 0.35);
+  }
+  .card-num { color: var(--gold-700); font-family: var(--font-display); font-weight: 900; font-size: 1.5rem; opacity: 0.6; }
+  .card h3 { margin: 0 0 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; line-height: 1.2; letter-spacing: 0.02em; }
+  .card p { margin: 0; color: var(--muted); }
+  @media (max-width: 880px) { .cards { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; } }
+
+  /* City band */
+  .city { position: relative; isolation: isolate; overflow: hidden; }
+  .city::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: var(--grain-light), radial-gradient(ellipse at 50% 0%, rgba(201, 164, 101, 0.14), transparent 60%);
+  }
+  .stat-grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-block: 1px solid var(--line-dark);
+  }
+  .stat { padding: 40px 20px 36px; text-align: center; }
+  .stat + .stat { border-left: 1px solid var(--line-dark); }
+  .stat .icon { display: block; width: 30px; height: 30px; margin: 0 auto 16px; color: var(--gold-400); }
+  .stat-pre { display: block; color: var(--cream-300); font-family: var(--font-display); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .stat strong { display: block; margin: 4px 0 6px; color: var(--gold-300); font-family: var(--font-display); font-weight: 900; font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1.05; }
+  .stat-label { display: block; color: var(--cream-50); font-size: 1.15rem; }
+  .city-note { margin: 22px 0 0; text-align: center; color: var(--cream-300); font-size: 1rem; }
+  @media (max-width: 720px) {
+    .stat-grid { grid-template-columns: minmax(0, 1fr); }
+    .stat + .stat { border-left: 0; border-top: 1px solid var(--line-dark); }
+    .stat { display: grid; grid-template-columns: 7rem minmax(0, 1fr); align-items: center; column-gap: 14px; padding: 22px 4px; text-align: left; }
+    .stat .icon { display: none; }
+    .stat strong { grid-column: 1; grid-row: 1 / span 2; margin: 0; font-size: clamp(2rem, 10vw, 2.6rem); white-space: nowrap; }
+    .stat-pre { grid-column: 2; align-self: end; }
+    .stat-label { grid-column: 2; align-self: start; }
+  }
+
+  /* Steps */
+  .steps { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .steps::before { content: ""; position: absolute; top: 32px; left: 16.67%; right: 16.67%; border-top: 2px dashed rgba(128, 97, 47, 0.45); }
+  .step { position: relative; text-align: center; }
+  .step-num {
+    position: relative; display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto 22px;
+    border-radius: 50%; background: var(--red-700); color: #fbf3e2;
+    font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
+    box-shadow: 0 0 0 6px var(--paper), 0 0 0 7px rgba(128, 97, 47, 0.45);
+  }
+  .step h3 { margin: 0 0 8px; font-family: var(--font-display); font-weight: 700; font-size: 1.28rem; line-height: 1.2; }
+  .step p { margin: 0 auto; max-width: 30ch; color: var(--muted); }
+  .join-cta { display: flex; justify-content: center; margin-top: clamp(44px, 6vw, 60px); }
+  @media (max-width: 880px) {
+    .steps { grid-template-columns: minmax(0, 1fr); gap: 30px; max-width: 520px; margin-inline: auto; }
+    .steps::before { top: 32px; bottom: 32px; left: 31px; right: auto; border-top: 0; border-left: 2px dashed rgba(128, 97, 47, 0.45); }
+    .step { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
+    .step-num { margin: 0; }
+    .step h3 { margin-top: 6px; }
+    .step p { margin: 0; max-width: none; }
+  }
+
+  /* Cabinet */
+  .cabinet { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  .minister {
+    display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0;
+    padding: 28px 14px 26px; text-align: center; background: var(--card); border: 1px solid var(--line);
+    box-shadow: 0 18px 36px -30px rgba(60, 40, 15, 0.55);
+  }
+  .mono {
+    display: grid; place-items: center; width: 60px; height: 60px; flex: none; border-radius: 50%;
+    background: var(--ink-900); color: var(--gold-300); font-family: var(--font-display); font-weight: 900; font-size: 1.45rem;
+    box-shadow: 0 0 0 3px var(--card), 0 0 0 4px var(--gold-400);
+  }
+  .who { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; }
+  .role { color: var(--muted); font-family: var(--font-display); font-weight: 700; font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  .name { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.1rem, 4.4vw, 1.35rem); line-height: 1.1; overflow-wrap: anywhere; }
+  .minister.pm { background: var(--red-700); border-color: var(--red-800); color: #fbf3e2; }
+  .minister.pm .role { color: var(--gold-300); }
+  .minister.pm .mono { background: var(--cream-50); color: var(--red-700); box-shadow: 0 0 0 3px var(--red-700), 0 0 0 4px var(--gold-300); }
+  @media (max-width: 1023px) {
+    .cabinet { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .minister.pm { grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 20px; text-align: left; }
+    .minister.pm .who { align-items: flex-start; }
+  }
+  @media (max-width: 600px) { .cabinet { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+
+  /* Final call */
+  .final { position: relative; isolation: isolate; overflow: hidden; background: var(--red-800); color: var(--cream-50); text-align: center; --focus: var(--cream-50); }
+  .final::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: var(--grain-light), repeating-conic-gradient(from 0deg at 50% 115%, rgba(255, 222, 186, 0.035) 0deg 4deg, transparent 4deg 12deg);
+  }
+  .final-inner { padding-block: clamp(72px, 10vw, 124px); }
+  .final-pre { margin: 0; color: var(--gold-300); font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 2.4vw, 1.4rem); letter-spacing: 0.3em; text-transform: uppercase; }
+  .final-title {
+    margin: 10px 0 16px; font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(2.3rem, 9vw, 5.25rem); line-height: 1; text-transform: uppercase; text-wrap: balance;
+  }
+  .final-title small { font-size: 0.5em; vertical-align: 0.3em; }
+  .final-motto { margin: 0 0 36px; color: #f0d9c4; font-family: var(--font-display); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.3em; text-transform: uppercase; }
+  .invite { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; margin-top: 30px; }
+  .invite-label { width: 100%; color: #f0d9c4; font-size: 1rem; }
+  .invite code {
+    padding: 11px 14px; background: rgba(0, 0, 0, 0.22); border: 1px dashed rgba(227, 196, 138, 0.6);
+    color: var(--cream-50); font-family: var(--font-mono); font-size: 0.95rem; user-select: all; overflow-wrap: anywhere;
+  }
+  .copy-btn {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px;
+    background: transparent; color: var(--cream-50); border: 1px solid rgba(227, 196, 138, 0.6); border-radius: 2px;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer; transition: background-color 200ms var(--ease);
+  }
+  .copy-btn:hover { background: rgba(0, 0, 0, 0.2); }
+  .copy-btn .icon { width: 18px; height: 18px; }
+
+  /* Footer */
+  .site-footer { background: var(--ink-950); color: var(--cream-300); font-size: 1rem; --focus: var(--gold-300); }
+  .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-block: 32px; }
+  .footer-brand { display: flex; align-items: center; gap: 14px; }
+  .footer-brand svg { width: 30px; height: 34px; flex: none; }
+  .footer-brand strong { display: block; color: var(--cream-50); font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .footer-brand a { color: var(--cream-50); text-underline-offset: 3px; }
+  .disclaimer { margin: 0; font-size: 0.95rem; }
+
+  /* Scroll reveal (only when JS runs and motion is allowed) */
+  .js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); transition-delay: calc(var(--d, 0) * 90ms); }
+  .js [data-reveal].in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .nav a, .link-arrow, .link-arrow .icon, .copy-btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-discord" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.3V14"/><circle cx="16" cy="16" r="6"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/></symbol>
+  <symbol id="i-vote" viewBox="0 0 24 24"><path d="m9 12 2 2 4-4"/><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z"/><path d="M22 19H2"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+  <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="crest" viewBox="0 0 32 36"><path d="M2 2h28v14c0 9.5-6.6 15.6-14 18C8.6 31.6 2 25.5 2 16z" fill="#f6edda"/><path d="M13 2h6v30.5h-6zM2 11h28v6H2z" fill="#b8352b"/><path d="M2 2h28v14c0 9.5-6.6 15.6-14 18C8.6 31.6 2 25.5 2 16z" fill="none" stroke="#c9a465" stroke-width="1.5"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top"><svg aria-hidden="true" focusable="false"><use href="#crest"/></svg>Republic of Milan</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#why">Why Milan</a>
+      <a href="#city">The city</a>
+      <a href="#join">How to join</a>
+      <a href="#cabinet">Cabinet</a>
+    </nav>
+    <a class="btn btn-red btn-sm" href="https://discord.gg/TzPndrSHM" target="_blank" rel="noopener" aria-label="Join on Discord"><svg class="logo" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg><span>Join<span class="hide-sm"> on Discord</span></span></a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero dark" id="top" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg><span class="eyebrow-label">Founding Day</span><span class="eyebrow-date"><span>Saturday 10 October</span><span>17:00 UTC</span></span></p>
+        <h1 id="hero-title"><span class="the">The</span> <span>Republic</span> <span class="accent">Calls</span></h1>
+        <p class="lede">Milan is the nation that is ready on day one: a full government, a plan to build the city from the first hour, and people who will help you get started.</p>
+
+        <div id="countdown-wrap">
+          <div class="countdown" role="timer" aria-live="off" aria-label="Time until Founding Day">
+            <div class="unit"><b id="cd-d">00</b><span>Days</span></div>
+            <div class="unit"><b id="cd-h">00</b><span>Hours</span></div>
+            <div class="unit"><b id="cd-m">00</b><span>Minutes</span></div>
+            <div class="unit"><b id="cd-s">00</b><span>Seconds</span></div>
+          </div>
+          <p class="when" id="local-time">Open beta starts Saturday 10 October at 17:00 UTC.</p>
+        </div>
+        <p class="founded" id="founded" hidden>The Republic is founded. Come to Milan.</p>
+
+        <div class="actions">
+          <a class="btn btn-red btn-lg" href="https://discord.gg/TzPndrSHM" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg>Join on Discord</a>
+          <a class="link-arrow" href="#why">Why Milan<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-down"/></svg></a>
+        </div>
+      </div>
+
+      <figure class="hero-poster">
+        <div class="poster-art" role="img" aria-label="Recruitment poster: a uniformed figure points at the viewer beneath the crest of Milan, with the words The Republic Calls and Join the Republic of Milan.">
+          <picture><source srcset="poster-1.avif" type="image/avif"><img src="poster-1.webp" width="400" height="125" alt="" fetchpriority="high"></picture>
+          <picture><source srcset="poster-2.avif" type="image/avif"><img src="poster-2.webp" width="400" height="125" alt=""></picture>
+          <picture><source srcset="poster-3.avif" type="image/avif"><img src="poster-3.webp" width="400" height="125" alt=""></picture>
+          <picture><source srcset="poster-4.avif" type="image/avif"><img src="poster-4.webp" width="400" height="125" alt=""></picture>
+        </div>
+        <svg class="seal" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <defs><path id="seal-ring" d="M60 60m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs>
+          <circle cx="60" cy="60" r="58" fill="#8e2a1f"/>
+          <circle cx="60" cy="60" r="54.5" fill="none" stroke="#e3c48a" stroke-width="1"/>
+          <circle cx="60" cy="60" r="31" fill="none" stroke="#e3c48a" stroke-width="1"/>
+          <text fill="#f6edda" font-family="Cinzel, serif" font-weight="700" font-size="8.6"><textPath href="#seal-ring" textLength="262" lengthAdjust="spacing">REPUBLIC OF MILAN &#183; ANNO MMXXVI &#183;</textPath></text>
+          <g transform="translate(44 42)">
+            <path d="M2 2h28v14c0 9.5-6.6 15.6-14 18C8.6 31.6 2 25.5 2 16z" fill="#f6edda"/>
+            <path d="M13 2h6v30.5h-6zM2 11h28v6H2z" fill="#b8352b"/>
+            <path d="M2 2h28v14c0 9.5-6.6 15.6-14 18C8.6 31.6 2 25.5 2 16z" fill="none" stroke="#e3c48a" stroke-width="1.5"/>
+          </g>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="motto" aria-labelledby="motto-title">
+    <h2 class="sr-only" id="motto-title">Our motto</h2>
+    <div class="container motto-grid">
+      <div class="motto-item">
+        <span class="motto-num" aria-hidden="true">I</span>
+        <h3>Order</h3>
+        <p>A cabinet in office before the servers open, and rules everyone knows. No scramble on day one.</p>
+      </div>
+      <div class="motto-item">
+        <span class="motto-num" aria-hidden="true">II</span>
+        <h3>Honour</h3>
+        <p>We keep our word. Our agreements with other nations are written down, and our deals are fair.</p>
+      </div>
+      <div class="motto-item">
+        <span class="motto-num" aria-hidden="true">III</span>
+        <h3>Unity</h3>
+        <p>A real democracy with elections, a parliament, and a free press run by citizens, not the government.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section paper" id="why" aria-labelledby="why-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="kicker">Why Milan</p>
+        <h2 id="why-title">Ready on day one</h2>
+        <p class="intro">Milan's government, plans and people are in place before the servers open, so you can start building from the first hour.</p>
+      </header>
+      <div class="cards">
+        <article class="card" data-reveal style="--d:0">
+          <div class="card-top"><span class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-landmark"/></svg></span><span class="card-num" aria-hidden="true">I</span></div>
+          <h3>A government from the first hour</h3>
+          <p>A Prime Minister and four ministers are already in office, with a media charter, an embassy for foreign talks, and agreements with our neighbours under way.</p>
+        </article>
+        <article class="card" data-reveal style="--d:1">
+          <div class="card-top"><span class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-handshake"/></svg></span><span class="card-num" aria-hidden="true">II</span></div>
+          <h3>No one starts alone</h3>
+          <p>New to the game? A member walks you through your first day: getting to Milan, finding work, and training your stats.</p>
+        </article>
+        <article class="card" data-reveal style="--d:2">
+          <div class="card-top"><span class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-vote"/></svg></span><span class="card-num" aria-hidden="true">III</span></div>
+          <h3>Your vote counts</h3>
+          <p>After the party leaders, parliament seats go to members in the order they joined. Early citizens have a real shot at a seat.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section city dark" id="city" aria-labelledby="city-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="kicker">The city</p>
+        <h2 id="city-title">A city that works for you</h2>
+        <p class="intro">From the first hour we build hospitals, schools, factories and power plants in Milan. In Parlamentum, everyone who stands in the city gets the bonuses.</p>
+      </header>
+      <ul class="stat-grid" data-reveal>
+        <li class="stat"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-zap"/></svg><span class="stat-pre">Up to</span><strong>+50%</strong><span class="stat-label">energy regen</span></li>
+        <li class="stat"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-dumbbell"/></svg><span class="stat-pre">Up to</span><strong>25%</strong><span class="stat-label">faster training</span></li>
+        <li class="stat"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg><span class="stat-pre">Up to</span><strong>+25%</strong><span class="stat-label">output</span></li>
+      </ul>
+      <p class="city-note">Bonuses at full city index.</p>
+    </div>
+  </section>
+
+  <section class="section paper" id="join" aria-labelledby="join-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="kicker">Founding Day</p>
+        <h2 id="join-title">How to join</h2>
+      </header>
+      <ol class="steps">
+        <li class="step" data-reveal style="--d:0">
+          <span class="step-num" aria-hidden="true">I</span>
+          <div><h3>Join the Discord</h3><p>Come into the Republic of Milan server and answer the one-question registration.</p></div>
+        </li>
+        <li class="step" data-reveal style="--d:1">
+          <span class="step-num" aria-hidden="true">II</span>
+          <div><h3>Be online Saturday</h3><p>Parlamentum's open beta starts on 10 October at 17:00 UTC. It is free and needs no code.</p></div>
+        </li>
+        <li class="step" data-reveal style="--d:2">
+          <span class="step-num" aria-hidden="true">III</span>
+          <div><h3>Come to Milan</h3><p>We fly in together, found the state and start building. We will help you get there.</p></div>
+        </li>
+      </ol>
+      <div class="join-cta">
+        <a class="btn btn-red btn-lg" href="https://discord.gg/TzPndrSHM" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg>Join on Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section paper-alt" id="cabinet" aria-labelledby="cabinet-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="kicker">The founding cabinet</p>
+        <h2 id="cabinet-title">Who leads Milan</h2>
+        <p class="intro">A Prime Minister and four ministers, in office before the servers open.</p>
+      </header>
+      <ul class="cabinet">
+        <li class="minister pm" data-reveal style="--d:0"><span class="mono" aria-hidden="true">A</span><span class="who"><span class="role">Prime Minister</span><strong class="name">Avemon</strong></span></li>
+        <li class="minister" data-reveal style="--d:1"><span class="mono" aria-hidden="true">M</span><span class="who"><span class="role">Foreign Affairs</span><strong class="name">Mugdu</strong></span></li>
+        <li class="minister" data-reveal style="--d:2"><span class="mono" aria-hidden="true">K</span><span class="who"><span class="role">Finance</span><strong class="name">Kaividali</strong></span></li>
+        <li class="minister" data-reveal style="--d:3"><span class="mono" aria-hidden="true">D</span><span class="who"><span class="role">Interior</span><strong class="name">DreX</strong></span></li>
+        <li class="minister" data-reveal style="--d:4"><span class="mono" aria-hidden="true">I</span><span class="who"><span class="role">Defense</span><strong class="name">Iosue</strong></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="final" aria-labelledby="final-title">
+    <div class="container final-inner" data-reveal>
+      <p class="final-pre">Join the</p>
+      <h2 class="final-title" id="final-title">Republic <small>of</small> Milan</h2>
+      <p class="final-motto">Order &middot; Honour &middot; Unity</p>
+      <a class="btn btn-cream btn-lg" href="https://discord.gg/TzPndrSHM" target="_blank" rel="noopener"><svg class="logo" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg>Join on Discord</a>
+      <div class="invite">
+        <span class="invite-label">Or copy the invite link</span>
+        <code id="invite-link">discord.gg/TzPndrSHM</code>
+        <button class="copy-btn" id="copy-btn" type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg><span>Copy</span></button>
+      </div>
+      <p class="sr-only" id="copy-status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <svg aria-hidden="true" focusable="false"><use href="#crest"/></svg>
+      <div><strong>Republic of Milan</strong>A player nation in <a href="https://parlamentum.org" target="_blank" rel="noopener">Parlamentum</a>, a geopolitical browser MMO.</div>
+    </div>
+    <p class="disclaimer">Not affiliated with the game's developers.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var target = Date.UTC(2026, 9, 10, 17, 0, 0);
+    var els = { d: $("cd-d"), h: $("cd-h"), m: $("cd-m"), s: $("cd-s") };
+    var wrap = $("countdown-wrap");
+    var founded = $("founded");
+
+    try {
+      var fmt = new Intl.DateTimeFormat(undefined, { weekday: "long", hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
+      $("local-time").textContent = "Open beta starts Saturday 10 October at 17:00 UTC. That is " + fmt.format(new Date(target)) + " where you are.";
+    } catch (e) { /* keep the UTC line */ }
+
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    var timer;
+    function render() {
+      var ms = target - Date.now();
+      if (ms <= 0) {
+        wrap.hidden = true;
+        founded.hidden = false;
+        clearInterval(timer);
+        return;
+      }
+      var s = Math.floor(ms / 1000);
+      els.d.textContent = pad(Math.floor(s / 86400));
+      els.h.textContent = pad(Math.floor((s % 86400) / 3600));
+      els.m.textContent = pad(Math.floor((s % 3600) / 60));
+      els.s.textContent = pad(s % 60);
+    }
+    timer = setInterval(function () { if (!document.hidden) render(); }, 1000);
+    render();
+    document.addEventListener("visibilitychange", render);
+
+    var btn = $("copy-btn");
+    var label = btn.querySelector("span");
+    var glyph = btn.querySelector("use");
+    var status = $("copy-status");
+    var reset;
+    function show(copied, message) {
+      clearTimeout(reset);
+      label.textContent = copied ? "Copied" : "Copy";
+      glyph.setAttribute("href", copied ? "#i-check" : "#i-copy");
+      status.textContent = message;
+      if (copied) reset = setTimeout(function () { show(false, ""); }, 2000);
+    }
+    function selectIt() {
+      var range = document.createRange();
+      range.selectNodeContents($("invite-link"));
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      show(false, "Invite link selected. Press Ctrl+C or Cmd+C to copy it.");
+    }
+    btn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText("https://discord.gg/TzPndrSHM").then(function () { show(true, "Invite link copied."); }, selectIt);
+      } else {
+        selectIt();
+      }
+    });
+
+    window.revealReady = true;
+    if (document.documentElement.classList.contains("js")) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      document.querySelectorAll("[data-reveal]").forEach(function (el) { io.observe(el); });
+    }
+  })();
+</script>
+</body>
+</html>
