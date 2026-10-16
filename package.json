@@ -1,0 +1,9 @@
+{
+  "name": "republic-of-milan",
+  "private": true,
+  "type": "module",
+  "description": "Site of the Republic of Milan in Parlamentum: recruitment page and the Parliament register",
+  "scripts": {
+    "dev": "node tools/serve.mjs 4321"
+  }
+}

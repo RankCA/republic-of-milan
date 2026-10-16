@@ -381,6 +381,18 @@
   }
   @media (max-width: 600px) { .cabinet { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
 
+  /* Parliament */
+  .acts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .acts:empty { display: none; }
+  .act-card { display: flex; flex-direction: column; transition: box-shadow 200ms var(--ease), transform 200ms var(--ease); }
+  .act-card:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 5px var(--card), inset 0 0 0 6px rgba(128, 97, 47, 0.45), 0 22px 40px -26px rgba(60, 40, 15, 0.6); }
+  .act-card h3 a { text-decoration: none; }
+  .act-card h3 a::after { content: ""; position: absolute; inset: 0; }
+  .card .act-ref { margin: 0 0 8px; color: var(--gold-700); font-family: var(--font-display); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .card .act-ref b { font-family: var(--font-body); font-weight: 600; font-size: 1.25em; letter-spacing: 0; }
+  .act-status { margin-top: auto; padding-top: 16px; color: var(--green-700); font-family: var(--font-display); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  @media (max-width: 880px) { .acts { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; } }
+
   /* Final call */
   .final { position: relative; isolation: isolate; overflow: hidden; background: var(--red-800); color: var(--cream-50); text-align: center; --focus: var(--cream-50); }
   .final::before {
@@ -453,6 +465,7 @@
       <a href="#city">The city</a>
       <a href="#join">How to join</a>
       <a href="#cabinet">Cabinet</a>
+      <a href="/parliament">Parliament</a>
     </nav>
     <a class="btn btn-red btn-sm" href="https://discord.gg/TzPndrSHM" target="_blank" rel="noopener" aria-label="Join on Discord"><svg class="logo" aria-hidden="true" focusable="false"><use href="#i-discord"/></svg><span>Join<span class="hide-sm"> on Discord</span></span></a>
   </div>
@@ -613,6 +626,20 @@
     </div>
   </section>
 
+  <section class="section paper" id="parliament" aria-labelledby="parliament-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="kicker">The Parliament</p>
+        <h2 id="parliament-title">Laws of the Republic</h2>
+        <p class="intro">Every law, treaty and resolution passed by Parliament, published in full for every citizen. No downloads needed.</p>
+      </header>
+      <div class="acts" id="latest-acts"></div>
+      <div class="join-cta">
+        <a class="btn btn-red btn-lg" href="/parliament"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-landmark"/></svg>Open the Register</a>
+      </div>
+    </div>
+  </section>
+
   <section class="final" aria-labelledby="final-title">
     <div class="container final-inner" data-reveal>
       <p class="final-pre">Join the</p>
@@ -699,6 +726,28 @@
         selectIt();
       }
     });
+
+    // Latest acts of Parliament, read from the public Register.
+    var acts = $("latest-acts");
+    var STATUS = { draft: "Draft", tabled: "Tabled", debate: "In debate", vote: "At vote", passed: "Passed", signed: "Signed", in_force: "In force", rejected: "Rejected", withdrawn: "Withdrawn", repealed: "Repealed", expired: "Expired" };
+    var KIND = { constitution: "Constitution", law: "Law", bill: "Bill", treaty: "Treaty", resolution: "Resolution", decree: "Decree", amendment: "Amendment", motion: "Motion" };
+    var NUM = ["I", "II", "III"];
+    var TONE = { passed: "var(--green-700)", signed: "var(--green-700)", in_force: "var(--green-700)", draft: "var(--gold-700)", tabled: "var(--gold-700)", debate: "var(--gold-700)", vote: "var(--gold-700)", rejected: "var(--red-700)", withdrawn: "var(--red-700)" };
+    function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+    if (window.fetch && acts) {
+      fetch("https://bzeghdivehdkvkaxzbgv.supabase.co/rest/v1/acts?select=slug,kind,number,status,title,summary,subtitle&order=updated_at.desc&limit=3", { headers: { apikey: "sb_publishable_2K_rGMa9rG6WTN6zKHSqvQ_0mebdzOj" } })
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (rows) {
+          acts.innerHTML = rows.map(function (a, i) {
+            return '<article class="card act-card"><div class="card-top"><span class="card-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#' + (a.kind === "treaty" ? "i-handshake" : "i-landmark") + '"/></svg></span><span class="card-num" aria-hidden="true">' + NUM[i] + "</span></div>" +
+              '<p class="act-ref">' + esc(KIND[a.kind] || a.kind) + " No. <b>" + esc(a.number) + "</b></p>" +
+              '<h3><a href="/parliament/acts/' + encodeURIComponent(a.slug) + '">' + esc(a.title) + "</a></h3>" +
+              "<p>" + esc(a.summary || a.subtitle || "") + "</p>" +
+              '<span class="act-status" style="color:' + (TONE[a.status] || "var(--muted)") + '">' + esc(STATUS[a.status] || a.status) + "</span></article>";
+          }).join("");
+        })
+        .catch(function () { acts.innerHTML = ""; });
+    }
 
     window.revealReady = true;
     if (document.documentElement.classList.contains("js")) {

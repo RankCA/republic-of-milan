@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "regions": ["lhr1"],
+  "functions": {
+    "api/act.js": { "includeFiles": "parliament/index.html" }
+  },
+  "rewrites": [
+    { "source": "/parliament/acts/:slug", "destination": "/api/act?slug=:slug" },
+    { "source": "/parliament/:path*", "destination": "/parliament/index.html" }
+  ],
+  "headers": [
+    { "source": "/parliament/vendor/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+  ],
+  "crons": [
+    { "path": "/api/keepalive", "schedule": "0 9 * * *" }
+  ]
+}
