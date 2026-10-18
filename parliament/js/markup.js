@@ -9,6 +9,7 @@
 //   President ______        signature line
 //   ---                     horizontal rule
 //   **bold**  *italic*
+//   \# not a heading     a backslash keeps a line (or * | _) as plain text
 //
 // Lines that start with none of these continue the block above, so text pasted
 // from a PDF with hard line breaks still flows into clean paragraphs.
@@ -38,9 +39,13 @@ export function parse(src) {
   const push = (b) => { blocks.push(b); last = b; return b; };
 
   for (const raw of lines) {
-    const line = raw.trim();
+    let line = raw.trim();
     if (!line) { last = null; continue; }
     let m;
+    // A leading backslash keeps the line as plain text: \# 1 is not a heading.
+    const literal = /^\\[#>|\-\u2022\u25AA\u25CF\u00B7\dAa]/.test(line);
+    if (literal) line = line.slice(1);
+    if (!literal) {
     if ((m = line.match(RX.h2))) { push({ type: 'h2', text: m[1].trim() }); continue; }
     if ((m = line.match(RX.h1))) { push({ type: 'h1', text: m[1].trim() }); continue; }
     if (RX.rule.test(line)) { push({ type: 'rule' }); last = null; continue; }
@@ -54,7 +59,7 @@ export function parse(src) {
       continue;
     }
     if (line.startsWith('|') && (m = line.match(RX.row))) {
-      const cells = m[1].split('|').map((c) => c.trim());
+      const cells = m[1].replace(/\|\s*$/, '').split(/(?<!\\)\|/).map((c) => c.trim());
       if (cells.every((c) => /^:?-{2,}:?$/.test(c))) continue;
       if (last && last.type === 'table') last.rows.push(cells);
       else push({ type: 'table', rows: [cells] });
@@ -69,6 +74,7 @@ export function parse(src) {
     if ((m = line.match(RX.clause))) { push({ type: 'clause', no: m[1], text: m[2] }); continue; }
     if ((m = line.match(RX.article))) { push({ type: 'clause', no: m[1], text: m[2], article: true }); continue; }
     if ((m = line.match(RX.bullet))) { push({ type: 'li', text: m[1] }); continue; }
+    }
     // Continuation of the block above, if it holds running text.
     if (last && last.trOpen) {
       last.tr = `${last.tr} ${line}`;
@@ -105,8 +111,11 @@ function anchors(blocks) {
   return ids;
 }
 
+// Backslash escapes (\* \_ \| \\) become character references so they are never read as markup.
+const unescape = (s) => s.replace(/\\([\\*_|#])/g, (_, c) => `&#${c.charCodeAt(0)};`);
+
 function inline(text, ids) {
-  let s = esc(text);
+  let s = unescape(esc(text));
   s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   s = s.replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, '$1<em>$2</em>');
   if (ids) {

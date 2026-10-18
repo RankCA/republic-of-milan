@@ -16,17 +16,21 @@ The acts live in a Supabase project. Citizens can only read published acts; ever
 
 ### Writing an act
 
+The editor works like a word processor: MPs type straight onto the page of the act, which looks the way citizens will see it. The toolbar sets each line as normal text, a section, a heading, a clause, a bullet, a translation or a signature line, and inserts tables, signature blocks and dividers. Sections number themselves (1, 2, 3) and so do clauses within them (1.1, 1.2). There is undo and redo, Ctrl or Cmd+S saves, a preview shows the finished act, and unsaved work is kept on the device in case the tab closes.
+
+Underneath, every act is stored as Markdown, and the Markdown tab shows it. Starting a line with these and pressing space also sets the style:
+
 | Write | You get |
 | --- | --- |
-| `# 1. Trade` | Section heading |
-| `## Annex A: Spheres` | Annex heading |
-| `1.1 Both states shall` | Numbered clause |
+| `# Trade` | Section, numbered for you (stored as `# 1. Trade`) |
+| `## Annex A: Spheres` | Heading without a number |
+| `1.1 Both states shall` | Clause, numbered for you within its section |
 | `- Prices are negotiated` | Bullet |
 | `> Fiyatlar müzakere edilir` | Translation of the line above |
 | `\| State \| Sphere \|` | Table row |
 | `President ______` | Signature line |
 
-Attach the PDF too. Its text is read in the browser, offered as a first draft of the official text, and indexed for search.
+Attach the PDF too. Its text is read in the browser and can be put straight onto the page as a first draft. It is also indexed for search.
 
 ## Run locally
 
@@ -44,7 +48,7 @@ To try the Members' portal without touching the live Register, open http://local
 - `poster-1.webp` to `poster-4.webp`: the recruitment poster in four 400px strips (fallback for older browsers)
 - `poster-1.avif` to `poster-4.avif`: the same strips at 800px for sharp screens
 - `og.webp`: the link preview image for Discord and other apps
-- `parliament/`: the Parliament pages (`index.html`, `parliament.css`, `js/`), styled to match the home page, plus `vendor/pdfjs` for showing PDFs
+- `parliament/`: the Parliament pages (`index.html`, `parliament.css`, `js/`), styled to match the home page, plus `vendor/pdfjs` for showing PDFs. `js/wp.js` is the word processor and `js/markup.js` reads and typesets the Markdown.
 - `api/act.js`: gives each act page its own title and description for link previews
 - `api/keepalive.js`: a daily Vercel cron that keeps the free Supabase project awake
 - `supabase/migrations/`: the database schema and the first three treaties

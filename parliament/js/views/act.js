@@ -15,14 +15,14 @@ export function docSheet(a, body) {
       ${crest(40)}
       <div class="state">Republic of Milan</div>
       <div class="house">Parliament</div>
-      <p class="kicker">${refHtml(a)}</p>
+      <p class="kicker">${a.number ? refHtml(a) : `New ${esc(kindLabel(a.kind).toLowerCase())}`}</p>
       <h1>${esc(a.title || 'Untitled act')}</h1>
       ${a.subtitle ? `<p class="doc-sub">${esc(a.subtitle)}</p>` : ''}
       <hr>
     </header>
     <div class="doc-body">${html || '<p class="doc-p hint">The text of this act has not been entered yet.</p>'}</div>
     <footer class="doc-foot">
-      <span>${esc(reference(a))}${a.passed_on ? `. Passed ${fmtDate(a.passed_on)}.` : '.'}<br>Published by the Parliament of the Republic of Milan.</span>
+      <span>${a.number ? esc(reference(a)) : `${esc(kindLabel(a.kind))}, numbered when entered in the Register`}${a.passed_on ? `. Passed ${fmtDate(a.passed_on)}.` : '.'}<br>Published by the Parliament of the Republic of Milan.</span>
       ${seal({ label: statusLabel(a.status), group: statusGroup(a.status), size: 104 })}
     </footer>
   </article>`;
